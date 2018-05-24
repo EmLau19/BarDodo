@@ -17,6 +17,7 @@ public class Cocktail_pan extends JPanel {
     {
 
         compo = new JTextArea(15,15);
+        JButton prepare = new JButton("Zhu Li Do the thing ! ");
         scrollPane = new JScrollPane(compo);
         compo.setVisible(false);
         compo.setEditable(false);
@@ -24,6 +25,7 @@ public class Cocktail_pan extends JPanel {
         pan_liste_name.setLayout(new BoxLayout(pan_liste_name, BoxLayout.Y_AXIS));
         this.add(pan_liste_name);
         this.add(scrollPane);
+        this.add(prepare);
         for (int i=0; i<liste_breuvage.getSize(); i++)
         {
             group.add(liste_breuvage.getListe_radio().get(i));

@@ -10,6 +10,14 @@ public class Cocktail {
     String name;
     int id;
 
+    public ArrayList<Ingredient> getComposition() {
+        return composition;
+    }
+
+    public void setComposition(ArrayList<Ingredient> composition) {
+        this.composition = composition;
+    }
+
     public String getName() {
         return name;
     }
@@ -32,7 +40,7 @@ public class Cocktail {
         {
             this.id = p_id;
             Statement state = conn.createStatement();
-            String request = "SELECT cocktail.name as cocktail_name, ingredient.name as ingredient_name, recette.Quantité as quantite " +
+            String request = "SELECT cocktail.name as cocktail_name, ingredient.name as ingredient_name, recette.Quantité as quantite, ingredient.temps_1cl " +
                     "FROM cocktail " +
                     "INNER JOIN recette ON cocktail.ID = recette.ID_Cocktail " +
                     "INNER JOIN ingredient ON recette.ID_Ingredient = ingredient.ID " +
@@ -46,7 +54,7 @@ public class Cocktail {
 
             do
             {
-                composition.add(new Ingredient(answer.getString("ingredient_name"), answer.getInt("quantite")));
+                composition.add(new Ingredient(answer.getString("ingredient_name"), answer.getInt("quantite"), answer.getInt("temps_1cl")));
             }while(answer.next());
         }
         catch (Exception e) {
@@ -78,7 +86,7 @@ public class Cocktail {
 
             do
             {
-                composition.add(new Ingredient(answer.getString("ingredient_name"), answer.getInt("quantite")));
+                composition.add(new Ingredient(answer.getString("ingredient_name"), answer.getInt("quantite"), answer.getInt("temps_1cl")));
             }while(answer.next());
         }
         catch (Exception e) {

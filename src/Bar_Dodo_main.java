@@ -24,7 +24,7 @@ public class Bar_Dodo_main {
         }
 
         Cocktail_view fen = new Cocktail_view();
-
+        Vanne_Controller vanne = new Vanne_Controller();
 
     }
 
